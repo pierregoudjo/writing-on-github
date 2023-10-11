@@ -650,3 +650,30 @@ solid cube_corner
   endfacet
 endsolid
 ```
+
+## Writing mathematical expressions
+
+To enable clear communication of mathematical expressions, GitHub supports LaTeX formatted math within Markdown. For more information, see [LaTeX/Mathematics](http://en.wikibooks.org/wiki/LaTeX/Mathematics) in Wikibooks.
+
+There are two options for delimiting a math expression inline with your text. You can either surround the expression with dollar symbols (<span><code>$</code></span>), or start the expression with <span><code>$\`</code></span> and end it with <span><code>\`$</code> </span>. The latter syntax is useful when the expression you are writing contains characters that overlap with markdown syntax.
+
+```
+This sentence uses `$` delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$
+```
+This sentence uses `$` delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$
+
+```
+This sentence uses $\` and \`$ delimiters to show math inline:  $`\sqrt{3x-1}+(1+x)^2`$
+```
+
+This sentence uses $\` and \`$ delimiters to show math inline:  $`\sqrt{3x-1}+(1+x)^2`$
+
+To add a math expression as a block, start a new line and delimit the expression with two dollar symbols $$.
+
+```
+**The Cauchy-Schwarz Inequality**
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+```
+
+**The Cauchy-Schwarz Inequality**
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
