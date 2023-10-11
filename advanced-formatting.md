@@ -39,11 +39,7 @@ You can add an image or a code block, too.
 
 </details>
 
-## Creating diagrams
-
-You can create diagrams in Markdown using three different syntaxes: mermaid, geoJSON and topoJSON, and ASCII STL. Diagram rendering is available in GitHub Issues, GitHub Discussions, pull requests, wikis, and Markdown files.
-
-### Creating Mermaid diagrams
+## Creating Mermaid diagrams
 Mermaid is a Markdown-inspired tool that renders text into diagrams. For example, Mermaid can render flow charts, sequence diagrams, pie charts and more. For more information, see the [Mermaid documentation](https://mermaid.js.org/intro/).
 
 To create a Mermaid diagram, add Mermaid syntax inside a fenced code block with the mermaid language identifier. For more information about creating code blocks, see "Creating and highlighting code blocks."
@@ -74,7 +70,7 @@ graph TD;
 
 There is multiple types of diagram available with the mermaid syntax. Some won't be displayed automatically by the Github UI though but most of them will.
 
-#### Sequence Diagram
+### Sequence Diagram
 
 ````
 ```mermaid
@@ -93,7 +89,7 @@ sequenceDiagram
     John-->>-Alice: I feel great!
 ```
 
-#### Flowchart
+### Flowchart
 
 ````
 ```mermaid
@@ -115,7 +111,7 @@ flowchart TD
     C -->|Three| F[fa:fa-car Car]
 ```
 
-#### Class diagram
+### Class diagram
 
 ````
 ```mermaid
@@ -167,7 +163,7 @@ classDiagram
     }
 ```
 
-#### State diagram
+### State diagram
 
 ````
 ```mermaid
@@ -191,7 +187,7 @@ stateDiagram-v2
     Crash --> [*]
 ```
 
-#### Entity-Relationship Diagram
+### Entity-Relationship Diagram
 
 ````
 ```mermaid
@@ -219,7 +215,7 @@ erDiagram
     PRODUCT ||--o{ ORDER-ITEM : "ordered in"
 ```
 
-#### Gantt Diagram
+### Gantt Diagram
 ````
 ```mermaid
 gantt
@@ -246,7 +242,7 @@ gantt
     another task      : 24d
 ```
 
-#### User Journey Diagram
+### User Journey Diagram
 
 ````
 ```mermaid
@@ -274,7 +270,7 @@ journey
       Sit down: 3: Me
 ```
 
-#### Git graph Diagrams
+### Git graph Diagrams
 
 ````
 ```mermaid
@@ -306,7 +302,7 @@ gitGraph
     commit
 ```
 
-#### Pie Chart
+### Pie Chart
 
 ````
 ```mermaid
@@ -324,7 +320,7 @@ pie title Pets adopted by volunteers
     "Rats" : 15
 ```
 
-#### Mindmap
+### Mindmap
 
 ````
 ```mermaid
@@ -368,7 +364,7 @@ mindmap
       Mermaid
 ```
 
-#### Timeline Diagram
+### Timeline Diagram
 
 ````
 ```mermaid
@@ -390,11 +386,11 @@ timeline
     2006 : Twitter
 ```
 
-### Creating GeoJSON and TopoJSON maps
+## Creating maps
 
 You can use GeoJSON or TopoJSON syntax to create interactive maps. To create a map, add GeoJSON or TopoJSON inside a fenced code block with the `geojson` or `topojson` syntax identifier
 
-#### Using GeoJSON
+### Using GeoJSON
 
 For example, you can create a map by specifying coordinates.
 
@@ -503,5 +499,82 @@ For example, you can create a map by specifying coordinates.
       }
     }
   ]
+}
+```
+
+### Using TopoJSON
+
+For example, you can create a TopoJSON map by specifying coordinates and shapes.
+
+````
+
+```topojson
+{
+  "type": "Topology",
+  "transform": {
+    "scale": [0.0005000500050005, 0.00010001000100010001],
+    "translate": [100, 0]
+  },
+  "objects": {
+    "example": {
+      "type": "GeometryCollection",
+      "geometries": [
+        {
+          "type": "Point",
+          "properties": {"prop0": "value0"},
+          "coordinates": [4000, 5000]
+        },
+        {
+          "type": "LineString",
+          "properties": {"prop0": "value0", "prop1": 0},
+          "arcs": [0]
+        },
+        {
+          "type": "Polygon",
+          "properties": {"prop0": "value0",
+            "prop1": {"this": "that"}
+          },
+          "arcs": [[1]]
+        }
+      ]
+    }
+  },
+  "arcs": [[[4000, 0], [1999, 9999], [2000, -9999], [2000, 9999]],[[0, 0], [0, 9999], [2000, 0], [0, -9999], [-2000, 0]]]
+}
+```
+````
+
+```topojson
+{
+  "type": "Topology",
+  "transform": {
+    "scale": [0.0005000500050005, 0.00010001000100010001],
+    "translate": [100, 0]
+  },
+  "objects": {
+    "example": {
+      "type": "GeometryCollection",
+      "geometries": [
+        {
+          "type": "Point",
+          "properties": {"prop0": "value0"},
+          "coordinates": [4000, 5000]
+        },
+        {
+          "type": "LineString",
+          "properties": {"prop0": "value0", "prop1": 0},
+          "arcs": [0]
+        },
+        {
+          "type": "Polygon",
+          "properties": {"prop0": "value0",
+            "prop1": {"this": "that"}
+          },
+          "arcs": [[1]]
+        }
+      ]
+    }
+  },
+  "arcs": [[[4000, 0], [1999, 9999], [2000, -9999], [2000, 9999]],[[0, 0], [0, 9999], [2000, 0], [0, -9999], [-2000, 0]]]
 }
 ```
