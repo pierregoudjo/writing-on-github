@@ -7,7 +7,7 @@ This repository showcases various features that can improve your ability to pres
 ## Table of contents
 
 - [Markdown introduction](./markdown.md)
-- [Markdown Advanced formating](./advanced-formating.md)
+- [Markdown Advanced formating](./advanced-formatting.md)
 - [Architecture Decision Records](./doc/architecture/decisions/README.md)
 
 
