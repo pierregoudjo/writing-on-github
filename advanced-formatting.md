@@ -44,13 +44,25 @@ You can add an image or a code block, too.
 You can create diagrams in Markdown using three different syntaxes: mermaid, geoJSON and topoJSON, and ASCII STL. Diagram rendering is available in GitHub Issues, GitHub Discussions, pull requests, wikis, and Markdown files.
 
 ### Creating Mermaid diagrams
-Mermaid is a Markdown-inspired tool that renders text into diagrams. For example, Mermaid can render flow charts, sequence diagrams, pie charts and more. For more information, see the Mermaid documentation.
+Mermaid is a Markdown-inspired tool that renders text into diagrams. For example, Mermaid can render flow charts, sequence diagrams, pie charts and more. For more information, see the [Mermaid documentation](https://mermaid.js.org/intro/).
 
 To create a Mermaid diagram, add Mermaid syntax inside a fenced code block with the mermaid language identifier. For more information about creating code blocks, see "Creating and highlighting code blocks."
 
 For example, you can create a flow chart by specifying values and arrows.
 
 Here is a simple flow chart:
+
+````markdown
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+````
+
+The diagram will be shown below if viewed in the Github interface
 
 ```mermaid
 graph TD;
@@ -60,8 +72,11 @@ graph TD;
     C-->D;
 ```
 
-There is multiple types of diagram available in mermaid:
+There is multiple types of diagram available with the mermaid syntax. Some won't be displayed automatically by the Github UI though but most of them will.
 
+#### Sequence Diagram
+
+````
 ```mermaid
 sequenceDiagram
     Alice->>+John: Hello John, how are you?
@@ -69,6 +84,27 @@ sequenceDiagram
     John-->>-Alice: Hi Alice, I can hear you!
     John-->>-Alice: I feel great!
 ```
+````
+```mermaid
+sequenceDiagram
+    Alice->>+John: Hello John, how are you?
+    Alice->>+John: John, can you hear me?
+    John-->>-Alice: Hi Alice, I can hear you!
+    John-->>-Alice: I feel great!
+```
+
+#### Flowchart
+
+````
+```mermaid
+flowchart TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]
+```
+````
 
 ```mermaid
 flowchart TD
@@ -78,6 +114,34 @@ flowchart TD
     C -->|Two| E[iPhone]
     C -->|Three| F[fa:fa-car Car]
 ```
+
+#### Class diagram
+
+````
+```mermaid
+classDiagram
+    Animal <|-- Duck
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+      +String beakColor
+      +swim()
+      +quack()
+    }
+    class Fish{
+      -int sizeInFeet
+      -canEat()
+    }
+    class Zebra{
+      +bool is_wild
+      +run()
+    }
+```
+````
 
 ```mermaid
 classDiagram
@@ -103,6 +167,9 @@ classDiagram
     }
 ```
 
+#### State diagram
+
+````
 ```mermaid
 stateDiagram-v2
     [*] --> Still
@@ -112,6 +179,33 @@ stateDiagram-v2
     Moving --> Crash
     Crash --> [*]
 ```
+````
+
+```mermaid
+stateDiagram-v2
+    [*] --> Still
+    Still --> [*]
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
+```
+
+#### Entity-Relationship Diagram
+
+````
+```mermaid
+erDiagram
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : has
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER ||--o{ INVOICE : "liable for"
+    DELIVERY-ADDRESS ||--o{ ORDER : receives
+    INVOICE ||--|{ ORDER : covers
+    ORDER ||--|{ ORDER-ITEM : includes
+    PRODUCT-CATEGORY ||--|{ PRODUCT : contains
+    PRODUCT ||--o{ ORDER-ITEM : "ordered in"
+```
+````
 
 ```mermaid
 erDiagram
@@ -125,6 +219,21 @@ erDiagram
     PRODUCT ||--o{ ORDER-ITEM : "ordered in"
 ```
 
+#### Gantt Diagram
+````
+```mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+```
+````
+
 ```mermaid
 gantt
     title A Gantt Diagram
@@ -137,6 +246,9 @@ gantt
     another task      : 24d
 ```
 
+#### User Journey Diagram
+
+````
 ```mermaid
 journey
     title My working day
@@ -148,6 +260,37 @@ journey
       Go downstairs: 5: Me
       Sit down: 3: Me
 ```
+````
+
+```mermaid
+journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 3: Me
+```
+
+#### Git graph Diagrams
+
+````
+```mermaid
+gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit
+```
+````
 
 ```mermaid
 gitGraph
@@ -163,12 +306,47 @@ gitGraph
     commit
 ```
 
+#### Pie Chart
+
+````
 ```mermaid
 pie title Pets adopted by volunteers
     "Dogs" : 386
     "Cats" : 85
     "Rats" : 15
 ```
+````
+
+```mermaid
+pie title Pets adopted by volunteers
+    "Dogs" : 386
+    "Cats" : 85
+    "Rats" : 15
+```
+
+#### Mindmap
+
+````
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectivness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+````
 
 ```mermaid
 mindmap
@@ -190,23 +368,9 @@ mindmap
       Mermaid
 ```
 
-```mermaid
-quadrantChart
-    title Reach and engagement of campaigns
-    x-axis Low Reach --> High Reach
-    y-axis Low Engagement --> High Engagement
-    quadrant-1 We should expand
-    quadrant-2 Need to promote
-    quadrant-3 Re-evaluate
-    quadrant-4 May be improved
-    Campaign A: [0.3, 0.6]
-    Campaign B: [0.45, 0.23]
-    Campaign C: [0.57, 0.69]
-    Campaign D: [0.78, 0.34]
-    Campaign E: [0.40, 0.34]
-    Campaign F: [0.35, 0.78]
-```
+#### Timeline Diagram
 
+````
 ```mermaid
 timeline
     title History of Social Media Platform
@@ -215,12 +379,13 @@ timeline
     2005 : Youtube
     2006 : Twitter
 ```
+````
 
 ```mermaid
-zenuml
-    title Annotators
-    @Actor Alice
-    @EC2 Bob
-    Alice->Bob: Hi Bob
-    Bob->Alice: Hi Alice
+timeline
+    title History of Social Media Platform
+    2002 : LinkedIn
+    2004 : Facebook : Google
+    2005 : Youtube
+    2006 : Twitter
 ```
